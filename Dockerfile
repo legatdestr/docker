@@ -1,12 +1,11 @@
-FROM node:7
+FROM legatdestr/ksb-js
 LABEL maintainer Sergey Kocketkov <legatdestr@gmail.com>
-ENV KSB_JS_VERSION 0.0.1
+ENV KSB_JS_VERSION 0.0.2
 
-RUN mkdir /app
 WORKDIR /app
-RUN npm install --global gulp
+RUN npm install -g yo bower grunt-cli gulp generator-webapp && npm cache clear
+RUN mkdir -p /root/.config/configstore && chmod g+rwx -R /root /root/.config /root/.config/configstore /
+    chown -R root /usr/local/lib/node_modules/
 
 # Example of building image:
-# docker build -t ksb-js `pwd` --build-arg https_proxy=${http_proxy} --build-arg http_proxy=${http_proxy}
-# Пример запуска:
-# docker run -d -p 80:80 -v `pwd`/htdocs:/var/www/vhosts/infotouch.em70.ru/htdocs/ ksb-js
+# docker build -t ksb-yo-webapp `pwd` --build-arg http_proxy=${http_proxy} --build-arg https_proxy=${http_proxy}

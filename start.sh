@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CONTAINER_NAME='em_test_DEV'
+CONTAINER_NAME='em_ksb_yo_app'
 CONTAINER_WORKDIR='/app'
 CONTAINER_HELP="Чтобы остановить контейнер, просто завершите сеанс работы в консоли. (Ctrl+D)"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -20,5 +20,5 @@ docker run -it --network="bridge" \
     -e "https_proxy=${http_proxy}" \
     -v ${SCRIPT_DIR}../../:"${CONTAINER_WORKDIR}" \
     -w "${CONTAINER_WORKDIR}" \
-    legatdestr/ksb-js \
+    ksb-yo-webapp \
     /bin/bash ;
