@@ -1,6 +1,6 @@
-#docker
+# docker
 
-##Docker. Установка. (Для Ubuntu).
+## Docker. Установка. (Для Ubuntu).
 
 1) Установить пакеты через apt для использования поверх HTTPS:
 
@@ -44,11 +44,11 @@
 `sudo groupadd docker` - создание группы docker
 `sudo usermod -aG docker $USER` - добавление текущего пользователя в группу docker
 
-##Docker. Настройка для работы c прокси:
+## Docker. Настройка для работы c прокси:
 
-###Настроить Docker для загрузки из сети нужных ему пакетов:
+### Настроить Docker для загрузки из сети нужных ему пакетов:
 
-####Для Ubuntu 14.04 LTS
+#### Для Ubuntu 14.04 LTS
 
 Ubuntu 14.04 использует SysVinit, поэтому нужно:
 
@@ -62,7 +62,7 @@ export https_proxy="https://web-proxy.corp.xxxxxx.com:8080/"`
 
 `sudo service docker restart`
 
-####Для Ubuntu 16.04 LTS
+#### Для Ubuntu 16.04 LTS
 
 Ubuntu 16.04 использует Systemd, поэтому нужно:
 
@@ -78,7 +78,7 @@ Ubuntu 16.04 использует Systemd, поэтому нужно:
 Environment="HTTP_PROXY=https://proxy:6666"
 Environment="HTTPS_PROXY=https://proxy:6666"`
 
-###Настроить Docker для доступа к сети из контейнера через прокси:
+### Настроить Docker для доступа к сети из контейнера через прокси:
 
 1) Важно задать правильный DNS сервер. Для этого положить json файл "daemon.json" настроек сюда: /etc/docker/
 либо запускате docker клиент с пар-ом: --config-file daemon.json
