@@ -4,11 +4,7 @@
 
 1) Установить пакеты через apt для использования поверх HTTPS:
 
-`sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common`
+`sudo apt-get install apt-transport-https ca-certificates curl software-properties-common`
 
 2) Добавить официальный GPG ключ Docker'а:
 
@@ -22,26 +18,20 @@
 
 для amd64:
 
-`sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"`
+`sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
 
 для armhf:
 
-`sudo add-apt-repository \
-   "deb [arch=armhf] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"`
+`sudo add-apt-repository "deb [arch=armhf] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
 
 4) Установка непосредственно Docker CE:
 
-`sudo apt-get update`
+`sudo apt-get update`<br/>
 `sudo apt-get install docker-ce`
 
 5) Использование Docker без прав root (опционально):
 
-`sudo groupadd docker` - создание группы docker
+`sudo groupadd docker` - создание группы docker<br/>
 `sudo usermod -aG docker $USER` - добавление текущего пользователя в группу docker
 
 ## Docker. Настройка для работы c прокси:
@@ -54,9 +44,8 @@ Ubuntu 14.04 использует SysVinit, поэтому нужно:
 
 1) модифицировать файл /etc/default/docker:
 
-`
-export http_proxy="http://web-proxy.corp.xxxxxx.com:8080/"
-export https_proxy="https://web-proxy.corp.xxxxxx.com:8080/"`
+`export http_proxy="http://proxy:6666"`<br/>
+`export https_proxy="http://proxy:6666"`
 
 2) Перезапустить docker:
 
@@ -71,12 +60,10 @@ Ubuntu 16.04 использует Systemd, поэтому нужно:
 `mkdir /etc/systemd/system/docker.service.d`
 
 2) Добавить настройки прокси в файл
-`/etc/systemd/system/docker.service.d/http-proxy.conf`:
-
-`
-[Service]
-Environment="HTTP_PROXY=https://proxy:6666"
-Environment="HTTPS_PROXY=https://proxy:6666"`
+`/etc/systemd/system/docker.service.d/http-proxy.conf`:<br/>
+`[Service]`<br/>
+`Environment="HTTP_PROXY=https://proxy:6666"`<br/>
+`Environment="HTTPS_PROXY=https://proxy:6666"`
 
 ### Настроить Docker для доступа к сети из контейнера через прокси:
 
