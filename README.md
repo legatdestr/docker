@@ -65,6 +65,14 @@ Ubuntu 16.04 использует Systemd, поэтому нужно:
 `Environment="HTTP_PROXY=https://proxy:6666"`<br/>
 `Environment="HTTPS_PROXY=https://proxy:6666"`
 
+3) Применить изменения:
+
+`systemctl daemon-reload`
+
+4) Перезапустить Docker:
+
+`systemctl restart docker`
+
 ### Настроить Docker для доступа к сети из контейнера через прокси:
 
 1) Важно задать правильный DNS сервер. Для этого положить json файл "daemon.json" настроек сюда: /etc/docker/
