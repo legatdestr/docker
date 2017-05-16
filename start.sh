@@ -12,7 +12,7 @@ echo "${CONTAINER_HELP}";
 echo 'Запускаем контейнер: ' ${CONTAINER_NAME}.;
 
 docker run -it --network="bridge" \
-    -p3000:3000 \
+    -p9000:9000 \
     -p3001:3001 \
     --rm  \
     --name ${CONTAINER_NAME} \
@@ -20,5 +20,5 @@ docker run -it --network="bridge" \
     -e "https_proxy=${http_proxy}" \
     -v ${SCRIPT_DIR}../../:"${CONTAINER_WORKDIR}" \
     -w "${CONTAINER_WORKDIR}" \
-    ksb-yo-webapp \
+    legatdestr/ksb-yo-webapp \
     /bin/bash ;
