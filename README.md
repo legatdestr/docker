@@ -59,11 +59,12 @@ Ubuntu 16.04 использует Systemd, поэтому нужно:
 
 `mkdir /etc/systemd/system/docker.service.d`
 
-2) Добавить настройки прокси в файл
+2) Добавить настройки прокси в файл:
 `/etc/systemd/system/docker.service.d/http-proxy.conf`:<br/>
 `[Service]`<br/>
 `Environment="HTTP_PROXY=https://proxy:6666"`<br/>
-`Environment="HTTPS_PROXY=https://proxy:6666"`
+`Environment="HTTPS_PROXY=https://proxy:6666"`<br/>
+`Environment="NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com"`
 
 3) Применить изменения:
 
