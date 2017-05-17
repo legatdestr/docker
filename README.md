@@ -34,6 +34,11 @@
 `sudo groupadd docker` - создание группы docker<br/>
 `sudo usermod -aG docker $USER` - добавление текущего пользователя в группу docker
 
+## Docker. Настройка для работы в Windows 10
+
+В случае если используется Docker Toolbox + VirtualBox + Docker QuickStart Terminal.
+Чтобы смонтировать файлы проекта в Docker контейнер, следуйте совету вот [здесь](http://stackoverflow.com/questions/30864466/whats-the-best-way-to-share-files-from-windows-to-boot2docker-vm)
+
 ## Docker. Настройка для работы через прокси:
 
 ### Настроить Docker для загрузки из сети нужных ему пакетов:
