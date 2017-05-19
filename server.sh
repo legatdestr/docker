@@ -20,3 +20,5 @@ docker run -it --network="bridge" \
     -v ${SCRIPT_DIR}../../:/usr/share/nginx/html:ro \
     -w "${CONTAINER_WORKDIR}" \
     nginx ;
+
+echo 'Выполнена команда запуска веб-сервера. В консоль будет выводиться лог запросов.';

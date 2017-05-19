@@ -22,6 +22,3 @@ docker run -it --network="bridge" \
     -w "${CONTAINER_WORKDIR}" \
     legatdestr/ksb-yo-webapp \
     /bin/bash ;
-
-
-echo 'Выполнена команда запуска веб-сервера. В консоль будет выводиться лог запросов.';
