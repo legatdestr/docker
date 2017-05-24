@@ -34,6 +34,6 @@ docker run -it --network="bridge" \
     -v ${PROTECTED_DIR_PATH}/../protected:/var/www/vhosts/er.em70.ru/protected \
     -v ${HT_TEMP_DIR_PATH}/../.ht_temp:/var/www/vhosts/er.em70.ru/.ht_temp \
     -v ${LOGS_DIR}:/var/www/vhosts/er.em70.ru/logs/ \
-    ksb_web_tablo \
+    legatdestr/ksb_web_tablo \
     apache2-foreground && echo "Container ${CONTAINER_NAME} was stopped. Exiting..."
 
