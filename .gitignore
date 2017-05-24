@@ -1,0 +1,9 @@
+/*
+/*/
+!configs/
+!.gitignore
+!Dockerfile
+!LICENSE
+!README.md
+!buildImage.sh
+!start.sh
