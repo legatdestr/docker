@@ -1,0 +1,11 @@
+/*
+/*/
+!.gitignore
+!.tmp/db/.gitkeep
+!.tmp/phpmyadmin/sessions/.gitkeep
+!db
+!www
+!.env
+!docker-compose-dev.yml
+!run.sh
+!README.md
