@@ -32,6 +32,7 @@ start_service() {
   echo "контролируйте состояние запуска командой:"
   echo "docker-compose -f ${DOCKER_COMPOSE_FILE} logs -f"
   echo "После завершения развертывания можно выйти ctrl+c и продолжить работу"
+  chmod 777 -R ${WEB_APP_DATA_DIR}
   docker-compose -f ${DOCKER_COMPOSE_FILE} up -d
 }
 
@@ -75,7 +76,7 @@ create_dump2() {
 }
 
 restore_dump2() {
-   echo 'starting to restore separated files';
+   echo 'MySQL: starting to restore separated sql files from '${DB_DUMP_PATH_SEPARATED};
    cat $( ls -rtd  ${DB_DUMP_PATH_SEPARATED}/*.sql  ) | docker exec -i $(docker-compose -f ${DOCKER_COMPOSE_FILE} ps -q  ${DB_CONTAINER_NAME})  bash -c "env MYSQL_PWD=${DB_PASS} mysql -u${DB_USER}  ${DB_NAME} "
 }
 
