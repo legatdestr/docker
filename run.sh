@@ -21,6 +21,7 @@ print_help() {
   echo "    -Z         Восстановление дампа базы каждой таблицы в отдельности из каталога separated. Предпочтительный способ."
   echo "    -e <имя контейнера>         Вход в контейнер"
   echo "    -p         Состояние сервисов"
+  echo "    -p         Показать логи"
 
 }
 
@@ -32,6 +33,11 @@ start_service() {
   echo "docker-compose -f ${DOCKER_COMPOSE_FILE} logs -f"
   echo "После завершения развертывания можно выйти ctrl+c и продолжить работу"
   docker-compose -f ${DOCKER_COMPOSE_FILE} up -d
+}
+
+
+show_logs() {
+  docker-compose -f ${DOCKER_COMPOSE_FILE} logs -f;
 }
 
 stop_service() {
@@ -84,7 +90,7 @@ if [ $# = 0 ]; then
     print_help
 fi
 
-while getopts ":hskrdDzZe:p" opt;
+while getopts ":hskrdDzZle:p" opt;
 do
   case $opt in
 	h) print_help
@@ -105,6 +111,8 @@ do
 	z) create_dump2
 	;;
 	Z) restore_dump2
+	;;
+	l) show_logs
 	;;
 	p) state
 	;;
