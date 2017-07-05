@@ -13,7 +13,7 @@ services:
       - ${DB_PORT}:3306
     volumes:
       - ${DB_CONTAINER_DATA_DIR}:/var/lib/mysql
-      - ${DB_DUMP_DIR}:/docker-entrypoint-initdb.d
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: ${PHPMYADMIN_CONTAINER_NAME}
