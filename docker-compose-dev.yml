@@ -1,42 +1,11 @@
 version: '2'
 
 services:
-  web_app_db:
-    image: mysql:5.6.36
-    container_name: ${DB_CONTAINER_NAME}
-    environment:
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASS}
-      - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASS}
-    ports:
-      - ${DB_PORT}:3306
-    volumes:
-      - ${DB_CONTAINER_DATA_DIR}:/var/lib/mysql
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: ${PHPMYADMIN_CONTAINER_NAME}
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=web_app_db
-      - PMA_USER=${DB_USER}
-      - PMA_PASSWORD=${DB_PASS}
-    restart: always
-    ports:
-      - ${PHPMYADMIN_PORT}:80
-    volumes:
-      - ${PHPMYADMIN_CONTAINER_SESSIONS_DIR}:/sessions
-    links:
-      - web_app_db:${DB_CONTAINER_NAME}
-
   web_app:
     image: joomla:3.7-apache
     container_name: ${WEB_APP_CONTAINER_NAME}
-    links:
-      - web_app_db:${DB_CONTAINER_NAME}
     environment:
-      - JOOMLA_DB_HOST=${DB_CONTAINER_NAME}
+      - JOOMLA_DB_HOST=${DB_HOST}:${DB_PORT}
       - JOOMLA_DB_USER=${DB_USER}
       - JOOMLA_DB_PASSWORD=${DB_PASS}
       - JOOMLA_DB_NAME=${DB_NAME}
