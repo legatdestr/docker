@@ -78,10 +78,10 @@ create_dump2() {
     for T in `docker exec ${DB_CONTAINER_NAME}  env MYSQL_PWD=${DB_PASS} mysql -uroot  -N -B -e 'show tables from '${DB_NAME} ` ;
     do
         echo "dumping table structure for ${T}";
-        docker exec -i $(docker-compose -f ${DOCKER_COMPOSE_FILE} ps -q  ${DB_CONTAINER_NAME}) env MYSQL_PWD=${DB_PASS} mysqldump -u ${DB_USER} ${DB_NAME} --skip-comments --skip-dump-date --skip-set-charset --skip-tz-utc --no-data ${T} > ${DB_DUMP_PATH_SEPARATED}/${T}.sql
+        docker exec -i $(docker-compose -f ${DOCKER_COMPOSE_FILE} ps -q  ${DB_CONTAINER_NAME}) env MYSQL_PWD=${DB_PASS} mysqldump -u ${DB_USER} ${DB_NAME} --skip-comments --skip-dump-date  --skip-tz-utc --no-data ${T} > ${DB_DUMP_PATH_SEPARATED}/${T}.sql
         if  [ "${T}" != "em70_session.data" ]; then
             echo "dumping table data for      ${T}";
-            docker exec -i $(docker-compose -f ${DOCKER_COMPOSE_FILE} ps -q  ${DB_CONTAINER_NAME}) env MYSQL_PWD=${DB_PASS} mysqldump -u ${DB_USER} ${DB_NAME} --skip-comments --skip-dump-date --skip-set-charset --skip-tz-utc --no-create-info ${T} > ${DB_DUMP_PATH_SEPARATED}/${T}.data
+            docker exec -i $(docker-compose -f ${DOCKER_COMPOSE_FILE} ps -q  ${DB_CONTAINER_NAME}) env MYSQL_PWD=${DB_PASS} mysqldump -u ${DB_USER} ${DB_NAME} --skip-comments --skip-dump-date  --skip-tz-utc --no-create-info ${T} > ${DB_DUMP_PATH_SEPARATED}/${T}.data
         fi
     done;
 }
