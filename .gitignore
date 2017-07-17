@@ -7,5 +7,6 @@
 !www
 !.env
 !docker-compose-dev.yml
+!docker-compose-db.yml
 !run.sh
 !README.md
