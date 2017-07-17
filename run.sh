@@ -6,6 +6,7 @@ source .env
 
 DOCKER_COMPOSE_DB_FILE="docker-compose-db.yml"
 DOCKER_COMPOSE_DEV_FILE="docker-compose-dev.yml"
+DOCKER_COMPOSE_ALL_FILE="docker-compose-all.yml"
 # по умолчанию - dev, но может быть переопределен при старте
 DOCKER_COMPOSE_FILE=${DOCKER_COMPOSE_DEV_FILE}
 
