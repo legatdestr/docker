@@ -1,11 +1,4 @@
 
-# Example of building image:
-# docker build -t ksb-yo-webapp `pwd` --build-arg http_proxy=${http_proxy} --build-arg https_proxy=${http_proxy}
-# docker run -it --rm -p 9000:9000 -v `pwd`:"/app" ksb-frontend bash
-
-
-
-
 # pull base image
 FROM ubuntu:16.04
 LABEL maintainer Sergey Kocketkov <legatdestr@gmail.com>
