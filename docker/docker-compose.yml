@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+  postgresql:
+    image: sameersbn/postgresql:9.6-2
+    container_name: ${CONTAINER_NAME_DB}
+    environment:
+    - DB_USER=${DB_USER}
+    - DB_PASS=${DB_PASS}
+    - DB_NAME=${DB_NAME}
+    ports:
+    - "5432:5432"
+    volumes:
+    - ${DB_CONTAINER_DATA_DIR}:/var/lib/postgresql
+
+  yii2_dev_app:
+    build:
+      context: ./webserver
+      dockerfile: Dockerfile-dev
+      args:
+        http_proxy: ${http_proxy}
+        http_proxy: ${https_proxy}
+        HTTP_PROXY: ${http_proxy}
+        HTTPS_PROXY: ${https_proxy}
+    image: ${IMAGE_NAME_APP}
+    container_name: ${CONTAINER_NAME_APP}
+    depends_on:
+      - postgresql
+    links:
+      - postgresql
+    environment:
+      - TZ=Asia/Krasnoyarsk
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+    ports:
+      - "80:80"
+    volumes:
+      - $APP_DIR:/var/www/vhosts/app
+      - $LOG_DIR:/var/www/vhosts/app/logs
