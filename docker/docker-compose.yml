@@ -33,7 +33,7 @@ services:
       - http_proxy=${http_proxy}
       - https_proxy=${https_proxy}
     ports:
-      - "80:80"
+      - "80:80" # web
     volumes:
       - $APP_DIR:/var/www/vhosts/app
       - $LOG_DIR:/var/www/vhosts/app/logs
