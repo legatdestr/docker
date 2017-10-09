@@ -28,6 +28,7 @@ start_service() {
   echo "контролируйте состояние запуска командой:"
   echo "docker-compose logs -f"
   echo "После завершения развертывания можно выйти ctrl+c и продолжить работу"
+  echo "Включите debugger в своей IDE. remote_port=9001"
   docker-compose up -d
 }
 
